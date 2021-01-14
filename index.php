@@ -8,3 +8,15 @@ $link = mysqli_connect("db", "root", "pass");
     
     
     echo "Connect Successfully. Host info: " . mysqli_get_host_info($link);
+    
+    use Monolog\Logger;
+    use Monolog\Handler\StreamHandler;
+    
+    // create a log channel
+    $log = new Logger('andrea');
+    $log->pushHandler(new StreamHandler('path/to/your.log', Logger::WARNING));
+    
+    // add records to the log
+    $log->warning('Foo');
+    $log->error('Bar');
+    
